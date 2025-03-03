@@ -1,4 +1,6 @@
-﻿namespace NewsAppAPIApp
+﻿using NewsAppAPIApp.Pages;
+
+namespace NewsAppAPIApp
 {
     public partial class App : Application
     {
@@ -6,7 +8,7 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new NewsHomepage();
         }
     }
 }

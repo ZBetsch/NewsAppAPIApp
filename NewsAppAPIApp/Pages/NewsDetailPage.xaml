@@ -2,11 +2,30 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NewsAppAPIApp.Pages.NewsDetailPage"
-             Title="NewsDetailPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="News Details">
+    <ScrollView>
+        <Grid RowDefinitions="auto, auto, auto, auto" RowSpacing="5">
+            <Frame Grid.Row="0">
+                <Label x:Name="lblTitle" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            </Frame>
+            <Image Grid.Row="1" x:Name="imgArticleImg" HorizontalOptions="Center" Aspect="Fill"/>
+            <Frame Grid.Row="2">
+                <Label x:Name="lblArticleText" FontSize="Medium"/>
+            </Frame>
+            <Frame Grid.Row="3">
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="See more at:" FontSize="Medium"/>
+                    <Label x:Name="lblUrl"
+                           FontSize="Medium"
+                           TextColor="Blue"
+                           FontAttributes="Bold"
+                           TextDecorations="Underline">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OpenUrl"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </HorizontalStackLayout>
+            </Frame>
+        </Grid>
+    </ScrollView>
 </ContentPage>

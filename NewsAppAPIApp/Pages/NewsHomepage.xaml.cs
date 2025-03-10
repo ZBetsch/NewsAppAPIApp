@@ -36,9 +36,17 @@ public partial class NewsHomepage : ContentPage
 
     private void CvNews_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        var selectedItem = e.CurrentSelection.FirstOrDefault() as Contact;
+        var selectedItem = e.CurrentSelection.FirstOrDefault() as Article;
         if (selectedItem == null) return;
-        Navigation.PushAsync(new NewsDetailPage());
+        Navigation.PushAsync(new NewsDetailPage(selectedItem));
+        ((CollectionView)sender).SelectedItem = null;
+    }
+
+    private void CvCategories_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        var selectedItem = e.CurrentSelection.FirstOrDefault() as Category;
+        if (selectedItem == null) return;
+        Navigation.PushAsync(new NewsListPage(selectedItem));
         ((CollectionView)sender).SelectedItem = null;
     }
 

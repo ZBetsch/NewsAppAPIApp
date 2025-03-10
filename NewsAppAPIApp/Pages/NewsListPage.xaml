@@ -3,10 +3,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NewsAppAPIApp.Pages.NewsListPage"
              Title="NewsListPage">
-    <VerticalStackLayout>
+    <Grid RowDefinitions="auto, auto" RowSpacing="5">
         <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+            Grid.Row="0"
+            x:Name="lblCategoryName"
+            FontSize="24"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            Padding="10"/>
+        <!--News Section-->
+        <CollectionView Grid.Row="1"
+                        Margin="5" 
+                        x:Name="CvCategoryNews" 
+                        SelectionMode="Single" 
+                        SelectionChanged="CvCategoryNews_SelectionChanged"
+                        HeightRequest="600">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="5" Margin="5">
+                        <Grid ColumnDefinitions="auto, *" ColumnSpacing="10" Padding="10" VerticalOptions="Center">
+                            <Image Grid.Column="0" HeightRequest="50" WidthRequest="100" Aspect="AspectFill" Source="{Binding Image}" />
+                            <Label Grid.Column="1" 
+                                   FontSize="Large" 
+                                   Text="{Binding Title}" 
+                                   VerticalTextAlignment="Center" 
+                                   HorizontalTextAlignment="Start" 
+                                   LineBreakMode="WordWrap" 
+                                   MaxLines="3" 
+                                   HorizontalOptions="FillAndExpand"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
 </ContentPage>
